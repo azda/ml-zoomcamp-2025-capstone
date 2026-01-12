@@ -13,13 +13,24 @@ An automated crack detection system using deep learning to classify concrete sur
 
 ## Quick Start
 
-### 1. Install Dependencies
+> **Note:** This project setup has been tested on macOS. I've done my best to ensure it works on Linux and Windows as well, but please accept my apologies for any inconvenience if you encounter platform-specific issues.
+
+### 1. Setup Virtual Environment
 
 ```bash
 # Install uv (if not already installed)
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
-# Create virtual environment and install dependencies
+# Create virtual environment
+uv venv
+
+# Activate virtual environment
+# On macOS/Linux:
+source .venv/bin/activate
+# On Windows:
+# .venv\Scripts\activate
+
+# Install dependencies
 uv sync
 ```
 
@@ -32,6 +43,31 @@ unzip surface-crack-detection.zip -d data/
 
 # Option 2: Manual download from
 # https://www.kaggle.com/datasets/arunrk7/surface-crack-detection
+```
+
+## Development
+
+### Open Notebook in VSCode
+
+Open `notebooks/notebook.ipynb` in VSCode and use the built-in Jupyter support.
+
+### Alternative: Run Jupyter Notebook through uv
+
+```bash
+# Start Jupyter
+uv run jupyter notebook
+
+# Open notebooks/notebook.ipynb
+```
+
+### Installing Additional Dependencies
+
+```bash
+# Add a new dependency
+uv add package-name
+
+# Add a development dependency
+uv add --dev package-name
 ```
 
 ### 3. Train Model
@@ -286,27 +322,6 @@ TFLite was selected over ONNX for the deployment format due to Fly.io platform c
 - F1-Score: 99.7%
 - Model Size: ~14MB (Keras), ~5MB (TFLite)
 - Inference Speed: ~20-30ms per image (CPU)
-
-## Development
-
-### Run Jupyter Notebook
-
-```bash
-# Start Jupyter
-uv run jupyter notebook
-
-# Open notebooks/notebook.ipynb
-```
-
-### Installing Additional Dependencies
-
-```bash
-# Add a new dependency
-uv add package-name
-
-# Add a development dependency
-uv add --dev package-name
-```
 
 ## Environment Variables
 
